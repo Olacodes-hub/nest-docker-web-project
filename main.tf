@@ -8,7 +8,7 @@ locals {
 
 #create vpc module
 module "vpc" {
-    source =  source = "./vpc"
+    source = "git@github.com:Olacodes-hub/nest-docker-web-project.git//vpc"
     region = local.region
     PROJECT-NAME = local.PROJECT_NAME
     ENVIRONMENT = local.ENVIRONMENT
