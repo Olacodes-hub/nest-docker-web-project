@@ -60,7 +60,7 @@ resource "aws_route_table" "private_route_table_az1" {
 
 # create private route table az2
 rresource "aws_route_table" "private_route_table_az2" {
-  vpc_id = var.vpc_id
+  vpc_id = "10.0.0.0/16"
 
   route {
     cidr_block     = "0.0.0.0/0"
