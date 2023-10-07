@@ -39,9 +39,6 @@ resource "aws_security_group" "ssh_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    Name = "ssh-sg"
-  }
 }
 
 # create security group for application load balancer.. expose port 80, 443
