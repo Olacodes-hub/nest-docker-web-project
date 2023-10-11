@@ -42,3 +42,4 @@ module "nat-gateway" {
 module "security-group" {
   source                       = "git@github.com:Olacodes-hub/nest-docker-web-project.git//security-group"
   vpc_id                       = module.vpc.vpc_id
+}
