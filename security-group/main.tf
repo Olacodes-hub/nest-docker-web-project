@@ -1,55 +1,11 @@
-# create security group for the ec2 instance connect endpoint
-resource "aws_security_group" "eice_security_group" {
-  name        = "ec2-endpoint-connect-sg"
-  description = "enable outbound traffic on port 22 from the vpc cidr"
-  vpc_id      = var.vpc_id
-
-  egress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/16"]
-  }
-
-  tags = {
-    Name = "ec2-endpoint-connect-sg"
-  }
-}
-
-
-# create security group to ssh into ec2.. expose port 22
-
-resource "aws_security_group" "ssh_sg" {
-  name        = "ssh-sg"
-  description = "Allow ssh connection"
-  vpc_id      = var.vpc_id
-
-  ingress {
-    description = "TLS from VPC"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-}
-
-# create security group for application load balancer.. expose port 80, 443
-
-resource "aws_security_group" "alb_sg" {
+# create security group for the application load balancer
+resource "aws_security_group" "alb_security_group" {
   name        = "alb-sg"
-  description = "Allow port 80 and 443"
+  description = "enable http/https access on port 80/443"
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "HTTP"
+    description = "http access"
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
@@ -57,7 +13,7 @@ resource "aws_security_group" "alb_sg" {
   }
 
   ingress {
-    description = "HTTPS"
+    description = "https access"
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
@@ -76,38 +32,19 @@ resource "aws_security_group" "alb_sg" {
   }
 }
 
-# create security group for ec2 webserver, expose port 22, 80, and 443
-resource "aws_security_group" "webserver_sg" {
-  name        = "webserver-sg"
-  description = "Allow TLS inbound traffic"
+# create security group for the bastion host aka jump box
+resource "aws_security_group" "bastion_security_group" {
+  name        = "ssh-sg"
+  description = "enable ssh access on port 22"
   vpc_id      = var.vpc_id
 
   ingress {
-    description     = "HTTPS"
-    from_port       = 443
-    to_port         = 443
-    protocol        = "tcp"
-    security_groups = [aws_security_group.alb_sg.id]
-
+    description = "ssh access"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
-
-  ingress {
-    description     = "HTTP"
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
-    security_groups = [aws_security_group.alb_sg.id]
-  }
-
-  ingress {
-    description     = "SSH"
-    from_port       = 22
-    to_port         = 22
-    protocol        = "tcp"
-    security_groups = [aws_security_group.ssh_sg.id]
-
-  }
-
 
   egress {
     from_port   = 0
@@ -117,14 +54,48 @@ resource "aws_security_group" "webserver_sg" {
   }
 
   tags = {
-    Name = "webserver-sg"
+    Name = "ssh-sg"
+  }
+}
+
+# create security group for the app server
+resource "aws_security_group" "app_server_security_group" {
+  name        = "app-server-sg"
+  description = "enable http/https access on port 80/443 via alb sg"
+  vpc_id      = var.vpc_id
+
+  ingress {
+    description     = "http access"
+    from_port       = 80
+    to_port         = 80
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_security_group.id]
+  }
+
+  ingress {
+    description     = "https access"
+    from_port       = 443
+    to_port         = 443
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_security_group.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "app-server-sg"
   }
 }
 
 # create security group for the database
 resource "aws_security_group" "database_security_group" {
   name        = "database-sg"
-  description = "allows acces to db-sg"
+  description = "enable mysql/aurora access on port 3306"
   vpc_id      = var.vpc_id
 
   ingress {
@@ -132,17 +103,43 @@ resource "aws_security_group" "database_security_group" {
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    security_groups = [aws_security_group.webserver_sg.id]
+    security_groups = [aws_security_group.database_security_group.id]
+  }
+
+  ingress {
+    description     = "custom access"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    security_groups = [aws_security_group.bastion_security_group.id]
   }
 
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = -1
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   tags = {
     Name = "database-sg"
+  }
+}
+
+# create security group for the ec2 instance connect endpoint
+resource "aws_security_group" "eice_security_group" {
+  name        = "ec2-endpoint-connect-sg"
+  description = "enable outbound traffic on port 22 from the vpc cidr"
+  vpc_id      = aws_vpc.vpc.id
+
+  egress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["10.0.0.0/16"]
+  }
+
+  tags = {
+    Name = "ec2-endpoint-connect-sg"
   }
 }
