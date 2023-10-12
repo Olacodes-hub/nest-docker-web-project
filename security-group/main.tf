@@ -130,7 +130,7 @@ resource "aws_security_group" "database_security_group" {
 resource "aws_security_group" "eice_security_group" {
   name        = "ec2-endpoint-connect-sg"
   description = "enable outbound traffic on port 22 from the vpc cidr"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = var.vpc_id
 
   egress {
     from_port   = 22
