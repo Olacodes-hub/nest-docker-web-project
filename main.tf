@@ -43,3 +43,20 @@ module "security-group" {
   source = "git@github.com:Olacodes-hub/nest-docker-web-project.git//security-group"
   vpc_id = module.vpc.vpc_id
 }
+# create rds instance
+module "name" {
+  source                 = "git@github.com:Olacodes-hub/nest-docker-web-project.git//rds"
+  vpc_id                 = module.vpc.vpc_id
+  db_instance_identifier = var.db_instance_identifier
+  instance_class         = var.instance_class
+  username               = var.username
+  password               = var.password
+}
+output "rds_endpoint" {
+  value = aws_db_instance.rds_instance.endpoint
+}
+
+
+
+
+
