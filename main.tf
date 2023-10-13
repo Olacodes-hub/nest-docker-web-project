@@ -45,15 +45,15 @@ module "security-group" {
 }
 # create rds instance
 module "name" {
-  source                 = "git@github.com:Olacodes-hub/nest-docker-web-project.git//rds"
-  vpc_id                 = module.vpc.vpc_id
-  rds_db_name = var.rds_db_name
-  instance_class         = var.instance_class
-  username               = var.username
-  password               = var.password
+  source                     = "git@github.com:Olacodes-hub/nest-docker-web-project.git//rds"
+  vpc_id                     = module.vpc.vpc_id
+  rds_db_name                = var.rds_db_name
+  instance_class             = var.instance_class
+  username                   = var.username
+  password                   = var.password
   private_data_subnet_az1_id = module.vpc.private_data_subnet_az1_id
   private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
-  availability_zone_1 = module.vpc.availability_zone_1
+  availability_zone_1        = module.vpc.availability_zone_1
   database_security_group_id = [module.security-group.database_security_group_id]
 
 }
