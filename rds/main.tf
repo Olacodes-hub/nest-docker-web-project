@@ -21,7 +21,7 @@ resource "aws_db_instance" "database_instance"  {
   instance_class         = var.instance_class
   allocated_storage      = 20
   db_subnet_group_name   = aws_db_subnet_group.database_subnet_group.name
-  vpc_security_group_ids = [var.database_security_group_id]
+  vpc_security_group_ids = var.database_security_group_id
   availability_zone      = var.availability_zone_1
   skip_final_snapshot    = true
   publicly_accessible    = false
