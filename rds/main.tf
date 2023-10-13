@@ -1,7 +1,7 @@
 # create database subnet group
 resource "aws_db_subnet_group" "database_subnet_group" {
   name        = "subnet-groups"
-  subnet_ids  = [var.private_data_subnet_az1_id, var.private_data_subnet_az2.id]
+  subnet_ids  = [var.private_data_subnet_az1_id, var.private_data_subnet_az2_id]
   description = "subnets for rds instance"
 
   tags = {
