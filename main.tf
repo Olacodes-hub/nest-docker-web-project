@@ -56,10 +56,6 @@ module "name" {
   database_security_group_id = [module.security-group.database_security_group_id]
 
 }
-output "rds_endpoint" {
-  value = aws_db_instance.database_instance.endpoint
-
-}
 
 
 
