@@ -10,7 +10,7 @@ resource "aws_db_subnet_group" "database_subnet_group" {
 }
 
 # create rds database
-resource "aws_db_instance" "database_instance" {
+resource "aws_db_instance" "database_instance"  {
   engine                 = "mysql"
   engine_version         = "8.0.34"
   multi_az               = false
