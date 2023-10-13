@@ -51,6 +51,11 @@ module "name" {
   instance_class         = var.instance_class
   username               = var.username
   password               = var.password
+  private_data_subnet_az1_id = module.vpc.private_data_subnet_az1_id
+  private_data_subnet_az2_id = module.vpc.private_data_subnet_az2_id
+  availability_zone_1 = module.vpc.availability_zone_1
+  database_security_group_id = module.security-group.database_security_group_id
+
 }
 output "rds_endpoint" {
   value = aws_db_instance.rds_instance.endpoint

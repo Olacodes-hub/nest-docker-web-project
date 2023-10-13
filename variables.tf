@@ -50,3 +50,7 @@ variable "private_data_subnet_az2_cidr" {
   description = "private data subnet az2 cidr block"
   type        = string
 }
+
+variable "rds_db_name" {}
+variable "instance_class" {}
+variable "availability_zone_1"{}

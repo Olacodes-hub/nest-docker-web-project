@@ -1,7 +1,7 @@
 # create database subnet group
 resource "aws_db_subnet_group" "database_subnet_group" {
   name        = "subnet-groups"
-  subnet_ids  = [aws_subnet.private_data_subnet_az1.id, aws_subnet.private_data_subnet_az2.id]
+  subnet_ids  = [var.private_data_subnet_az1_id, var.private_data_subnet_az2.id]
   description = "subnets for rds instance"
 
   tags = {
@@ -15,14 +15,14 @@ resource "aws_db_instance" "database_instance" {
   engine_version         = "8.0.34"
   multi_az               = false
   identifier             = "nest-db"
-  username               = local.USERNAME
-  password               = local.PASSWORD
-  db_name                = local.RDS_DB_NAME
-  instance_class         = "db.t2.micro"
+  username               = var.username
+  password               = var.password
+  db_name                = var.rds_db_name
+  instance_class         = var.instance_class
   allocated_storage      = 20
   db_subnet_group_name   = aws_db_subnet_group.database_subnet_group.name
-  vpc_security_group_ids = [aws_security_group.database_security_group.id]
-  availability_zone      = "us-east-1b"
+  vpc_security_group_ids = [var.var.database_security_group_id]
+  availability_zone      = var.availability_zone_1
   skip_final_snapshot    = true
   publicly_accessible    = false
 }

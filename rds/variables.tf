@@ -1,18 +1,11 @@
-variable "db_instance_identifier" {
-  description = "The name of the RDS instance"
-}
-
-variable "instance_class" {
-  description = "The compute and memory capacity of the RDS instance"
-}
-
-variable "username" {
-  description = "Master username for the database"
-}
-
-variable "password" {
-  description = "Master password for the database"
-}
+variable "rds_db_name" {}
+variable "instance_class" {}
+variable "username" {}
+variable "password" {}
+variable "private_data_subnet_az1_id" {}
+variable "private_data_subnet_az2_id" {}
+variable "availability_zone_1"{}
+variable "database_security_group_id"{}
 
 
 
