@@ -1,0 +1,2 @@
+variable DOMAIN_NAME{}
+variable ALTERNATIVE_NAMES{}

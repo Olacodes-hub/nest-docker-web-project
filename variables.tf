@@ -56,3 +56,6 @@ variable "instance_class" {}
 variable "availability_zone_1" {}
 variable "username" {}
 variable "password" {}
+
+variable "DOMAIN_NAME" {}
+variable "ALTERNATIVE_NAMES" {}
