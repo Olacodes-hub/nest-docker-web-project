@@ -56,7 +56,12 @@ module "name" {
   database_security_group_id = [module.security-group.database_security_group_id]
 
 }
-
+module "acm" {
+  source = "git@github.com:Olacodes-hub/nest-docker-web-project.git//acm"
+  DOMAIN_NAME = var.DOMAIN_NAME
+  ALTERNATIVE_NAMES = var.ALTERNATIVE_NAMES
+  
+}
 
 
 

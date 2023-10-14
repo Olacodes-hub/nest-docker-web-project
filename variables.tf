@@ -59,3 +59,6 @@ variable "password" {}
 
 variable "DOMAIN_NAME" {}
 variable "ALTERNATIVE_NAMES" {}
+
+# create iam variables
+variable "role_name" {}
