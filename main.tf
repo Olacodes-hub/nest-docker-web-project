@@ -57,12 +57,16 @@ module "name" {
 
 }
 module "acm" {
-  source = "git@github.com:Olacodes-hub/nest-docker-web-project.git//acm"
-  DOMAIN_NAME = var.DOMAIN_NAME
+  source            = "git@github.com:Olacodes-hub/nest-docker-web-project.git//acm"
+  DOMAIN_NAME       = var.DOMAIN_NAME
   ALTERNATIVE_NAMES = var.ALTERNATIVE_NAMES
-  
+
 }
 
+module "iam" {
+  source    = "git@github.com:Olacodes-hub/nest-docker-web-project.git//iam"
+  role_name = var.role_name
 
+}
 
 

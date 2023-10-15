@@ -17,3 +17,8 @@ output "app_server_security_group_id" {
 output "database_security_group_id" {
   value = aws_security_group.database_security_group.id
 }
+
+# export the eice security group id
+output "eice_security_group_id" {
+  value = aws_security_group.eice_security_group.id
+}
