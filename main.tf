@@ -72,6 +72,6 @@ module "iam" {
 module "eice" {
   source                    = "git@github.com:Olacodes-hub/nest-docker-web-project.git//eice"
   private_app_subnet_az1_id = module.vpc.private_app_subnet_az1_id
-  eice_security_group_id    = [module.security-group.eice_security_group_id]
+  eice_security_group_id    = module.security-group.eice_security_group_id
 
 }
