@@ -1,7 +1,7 @@
-variable "RDS_DB_NAME" {}
+variable "rds_db_name_DB_NAME" {}
 variable "instance_class" {}
-variable "USERNAME" {}
-variable "PASSWORD" {}
+variable "username" {}
+variable "password" {}
 variable "private_data_subnet_az1_id" {}
 variable "private_data_subnet_az2_id" {}
 variable "availability_zone_1" {}
