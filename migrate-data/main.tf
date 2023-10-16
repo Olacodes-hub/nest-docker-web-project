@@ -6,7 +6,7 @@ resource "aws_instance" "data_migrate_ec2" {
   iam_instance_profile   = var.iam_instance_profile
 
 
-  user_data = base64encode(templatefile("${path.module}/install-and-configure-nest-app.sh.tpl", {
+  user_data = base64encode(templatefile("${path.module}/migrate-nest-sql.sh.tpl", {
     RDS_ENDPOINT = var.RDS_ENDPOINT
     RDS_DB_NAME  = var.RDS_DB_NAME
     USERNAME     = var.USERNAME
