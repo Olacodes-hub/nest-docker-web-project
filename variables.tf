@@ -65,7 +65,7 @@ variable "role_name" {}
 
 variable "amazon_linux_ami_id" {}
 variable "ec2_instance_type" {}
-variable "private_app_subnet_az1_id" {}
+
 
 
 
