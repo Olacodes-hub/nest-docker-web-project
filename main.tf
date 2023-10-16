@@ -75,19 +75,19 @@ module "eice" {
   eice_security_group_id    = toset([module.security-group.eice_security_group_id])
 
 }
-module "migrate-date" {
-  source = "git@github.com:Olacodes-hub/nest-docker-web-project.git//security-group"
-  amazon_linux_ami_id = var.amazon_linux_ami_id
-  ec2_instance_type = var.ec2_instance_type
-  private_app_subnet_az1_id = module.vpc.private_app_subnet_az1_id
+module "migrate-data" {
+  source                       = "git@github.com:Olacodes-hub/nest-docker-web-project.git//migrate-data"
+  amazon_linux_ami_id          = var.amazon_linux_ami_id
+  ec2_instance_type            = var.ec2_instance_type
+  private_app_subnet_az1_id    = module.vpc.private_app_subnet_az1_id
   app_server_security_group_id = module.security-group.app_server_security_group_id
-  eice_security_group_id = module.security-group.eice_security_group_id
-  RDS_ENDPOINT = module.rds.RDS_ENDPOINT
-  RDS_DB_NAME = module.rds.RDS_DB_NAME
-  USERNAME = var.USERNAME
-  PASSWORD = var.PASSWORD
-  PROJECT_NAME = module.vpc.PROJECT_NAME
-  ENVIRONMENT = module.vpc.ENVIRONMENT
-  DOMAIN_NAME = module.acom.DOMAIN_NAME
-  
+  eice_security_group_id       = module.security-group.eice_security_group_id
+  RDS_ENDPOINT                 = module.rds.RDS_ENDPOINT
+  RDS_DB_NAME                  = module.rds.RDS_DB_NAME
+  USERNAME                     = var.USERNAME
+  PASSWORD                     = var.PASSWORD
+  PROJECT_NAME                 = module.vpc.PROJECT_NAME
+  ENVIRONMENT                  = module.vpc.ENVIRONMENT
+  DOMAIN_NAME                  = module.acom.DOMAIN_NAME
+
 }
