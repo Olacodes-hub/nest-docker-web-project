@@ -77,6 +77,7 @@ module "eice" {
 }
 module "migrate-data" {
   source                       = "git@github.com:Olacodes-hub/nest-docker-web-project.git//migrate-data"
+  vpc_id = module.vpc.vpc_id
   amazon_linux_ami_id          = var.amazon_linux_ami_id
   ec2_instance_type            = var.ec2_instance_type
   private_app_subnet_az1_id    = module.vpc.private_app_subnet_az1_id
@@ -88,6 +89,6 @@ module "migrate-data" {
   PASSWORD                     = var.PASSWORD
   PROJECT_NAME                 = module.vpc.PROJECT_NAME
   ENVIRONMENT                  = module.vpc.ENVIRONMENT
-  DOMAIN_NAME                  = module.acom.DOMAIN_NAME
+  DOMAIN_NAME                  = module.acm.DOMAIN_NAME
 
 }
