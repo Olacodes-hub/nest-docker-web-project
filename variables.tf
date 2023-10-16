@@ -51,14 +51,20 @@ variable "private_data_subnet_az2_cidr" {
   type        = string
 }
 
-variable "rds_db_name" {}
+variable "RDS_DB_NAME" {}
 variable "instance_class" {}
 variable "availability_zone_1" {}
-variable "username" {}
-variable "password" {}
-
+variable "USERNAME" {}
+variable "PASSWORD" {}
 variable "DOMAIN_NAME" {}
 variable "ALTERNATIVE_NAMES" {}
 
 # create iam variables
 variable "role_name" {}
+
+
+variable "amazon_linux_ami_id" {}
+variable "ec2_instance_type" {}
+
+
+    
