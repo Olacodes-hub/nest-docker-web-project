@@ -8,7 +8,7 @@ variable "ec2_instance_type" {
   type        = string
 }
 
-variable "private_app_subnet_az1" {
+variable "private_app_subnet_az1_id" {
   description = "The ID of the private app subnet in availability zone 1"
   type        = string
 }
