@@ -83,7 +83,7 @@ module "migrate-data" {
   app_server_security_group_id = module.security-group.app_server_security_group_id
   eice_security_group_id       = module.security-group.eice_security_group_id
   RDS_ENDPOINT                 = module.rds.RDS_ENDPOINT
-  RDS_DB_NAME                  = module.rds.RDS_DB_NAME_db_name
+  db_name                  = module.rds.RDS_DB_NAME
   USERNAME                   = var.USERNAME
   PASSWORD                 = var.PASSWORD
   PROJECT_NAME                 = module.vpc.PROJECT_NAME
