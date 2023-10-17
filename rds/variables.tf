@@ -1,4 +1,4 @@
-variable "rds_db_name_DB_NAME" {}
+variable "rds_db_name" {}
 variable "instance_class" {}
 variable "username" {}
 variable "password" {}
