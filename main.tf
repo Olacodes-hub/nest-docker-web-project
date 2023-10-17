@@ -46,7 +46,7 @@ module "security-group" {
 # create rds instance
 module "rds" {
   source                     = "git@github.com:Olacodes-hub/nest-docker-web-project.git//rds"
-  db_name              = var.RDS_DB_NAME
+  RDS_DB_NAME              = var.RDS_DB_NAME
   instance_class             = var.instance_class
   username                   = var.USERNAME
   password                   = var.PASSWORD
