@@ -8,7 +8,7 @@ resource "aws_instance" "data_migrate_ec2" {
 
   user_data = base64encode(templatefile("${path.module}/migrate-nest-sql.sh.tpl", {
     RDS_ENDPOINT = var.RDS_ENDPOINT
-    RDS_DB_NAME_db_name  = var.RDS_DB_NAME
+    db_name  = var.RDS_DB_NAME
     USERNAME   = var.USERNAME
     PASSWORD    = var.PASSWORD
     PROJECT_NAME = var.PROJECT_NAME
