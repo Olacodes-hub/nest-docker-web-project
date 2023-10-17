@@ -15,9 +15,9 @@ resource "aws_db_instance" "database_instance"  {
   engine_version         = "8.0.34"
   multi_az               = false
   identifier             = "nest-db"
-  USERNAME               = var.USERNAME
-  PASSWORD               = var.PASSWORD
-  DB_NAME               = var.RDS_DB_NAME
+  username              = var.username
+  password               = var.password
+  db_name               = var.db_name
   instance_class         = var.instance_class
   allocated_storage      = 20
   db_subnet_group_name   = aws_db_subnet_group.database_subnet_group.name

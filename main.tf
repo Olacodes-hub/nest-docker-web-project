@@ -82,12 +82,9 @@ module "migrate-data" {
   private_app_subnet_az1_id    = module.vpc.private_app_subnet_az1_id
   app_server_security_group_id = module.security-group.app_server_security_group_id
   eice_security_group_id       = module.security-group.eice_security_group_id
-  RDS_ENDPOINT                 = module.rds.RDS_ENDPOINT
-  RDS_DB_NAME                  = module.rds.RDS_DB_NAME
-  USERNAME                   = var.USERNAME
-  PASSWORD                 = var.PASSWORD
-  PROJECT_NAME                 = module.vpc.PROJECT_NAME
-  ENVIRONMENT                  = module.vpc.ENVIRONMENT
-  DOMAIN_NAME                  = module.acm.DOMAIN_NAME
-
+  rds_endpoint                 = module.rds.rds_endpoint
+  rds_db_name                 = module.rds.rds_db_name
+  username                   = var.username
+  password                = var.password
+ 
 }

@@ -23,38 +23,22 @@ variable "eice_security_group_id" {
   type        = string
 }
 
-variable "RDS_ENDPOINT" {
+variable "rds_endpoint {
   description = "The RDS endpoint"
   type        = string
 }
 
-variable "RDS_DB_NAME" {
+variable "rds_db_name" {
   description = "The name of the RDS database"
   type        = string
 }
 
-variable "USERNAME" {
+variable "username" {
   description = "The username for something"
   type        = string
 }
 
-variable "PASSWORD" {
+variable "password" {
   description = "The password for something"
   type        = string
-}
-
-variable "PROJECT_NAME" {
-  description = "The name of the project"
-  type        = string
-}
-
-variable "ENVIRONMENT" {
-  description = "The environment of the project"
-  type        = string
-}
-
-variable "DOMAIN_NAME" {
-  description = "The domain name"
-  type        = string
-
 }
