@@ -56,4 +56,5 @@ variable "ENVIRONMENT" {
 variable "DOMAIN_NAME" {
   description = "The domain name"
   type        = string
+
 }
