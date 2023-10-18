@@ -23,7 +23,7 @@ variable "eice_security_group_id" {
   type        = string
 }
 
-variable "rds_endpoint {
+variable "rds_endpoint" {
   description = "The RDS endpoint"
   type        = string
 }
@@ -42,3 +42,4 @@ variable "password" {
   description = "The password for something"
   type        = string
 }
+
