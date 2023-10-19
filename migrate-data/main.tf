@@ -9,7 +9,7 @@ resource "aws_instance" "data_migrate_ec2" {
 
   user_data = base64encode(templatefile("${path.module}/install-and-configure-nest-app.sh.tpl", {
     RDS_ENDPOINT = aws_db_instance.database_instance.endpoint
-    db_name = var.db_name
+    rds_db_name = var.rds_db_name
     username     = var.username
     password     = var.password
 
