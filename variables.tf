@@ -51,7 +51,7 @@ variable "private_data_subnet_az2_cidr" {
   type        = string
 }
 
-variable "rds_db_name" {}
+variable "db_name" {}
 variable "instance_class" {}
 variable "availability_zone_1" {}
 variable "username" {}
