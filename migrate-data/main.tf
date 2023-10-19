@@ -7,7 +7,7 @@ resource "aws_instance" "data_migrate_ec2" {
   iam_instance_profile   = aws_iam_instance_profile.s3_full_access_instance_profile.id
 
 
-  user_data = base64encode(templatefile("${path.module}/install-and-configure-nest-app.sh.tpl", {
+  user_data = base64encode(templatefile("${path.module}/migrate-nest-sql.sh.tpl", {
     RDS_ENDPOINT = aws_db_instance.database_instance.endpoint
     rds_db_name = var.rds_db_name
     username     = var.username
