@@ -67,7 +67,7 @@ variable "role_name" {}
 variable "amazon_linux_ami_id" {}
 variable "ec2_instance_type" {}
 
-
+variable "iam_instance_profile" {}
 
 #
     
