@@ -66,6 +66,7 @@ module "acm" {
 module "iam" {
   source    = "git@github.com:Olacodes-hub/nest-docker-web-project.git//iam"
   role_name = var.role_name
+  iam_instance_profile = module.iam.iam_instance_profile
 
 }
 
