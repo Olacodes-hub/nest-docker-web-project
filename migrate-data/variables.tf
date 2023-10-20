@@ -43,3 +43,4 @@ variable "password" {
   type        = string
 }
 
+variable "rds_instance" {}

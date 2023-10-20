@@ -15,7 +15,7 @@ resource "aws_instance" "data_migrate_ec2" {
 
   }))
 
-  depends_on = [aws_db_instance.database_instance]
+  depends_on = [var.rds_instance]
 
   tags = {
     Name = "nest-ec2-migrate"
