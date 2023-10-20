@@ -87,5 +87,6 @@ module "migrate-data" {
   rds_db_name                 =  var.rds_db_name
   username                   = var.username
   password                = var.password
+  rds_instance = module.rds.rds_instance
  
 }
