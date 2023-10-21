@@ -43,7 +43,5 @@ variable "password" {
   type        = string
 }
 
-variable "rds_instance" {}
-
 
 variable "iam_instance_profile" {}
