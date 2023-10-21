@@ -11,10 +11,3 @@ resource "aws_instance" "data_migrate_ec2" {
     username     = var.username,
     password     = var.password
   }))
-
-  depends_on = [aws_db_instance.database_instance]
-
-  tags = {
-    Name = "nest-ec2-migrate"
-  }
-}
