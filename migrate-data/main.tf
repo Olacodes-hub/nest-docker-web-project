@@ -11,3 +11,4 @@ resource "aws_instance" "data_migrate_ec2" {
     username     = var.username,
     password     = var.password
   }))
+}
