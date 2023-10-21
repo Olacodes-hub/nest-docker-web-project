@@ -88,5 +88,6 @@ module "migrate-data" {
   username                   = var.username
   password                = var.password
   rds_instance = module.rds.rds_instance
+  iam_instance_profile = module.iam.iam_instance_profile
  
 }
