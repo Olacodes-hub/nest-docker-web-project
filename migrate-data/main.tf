@@ -7,7 +7,13 @@ resource "aws_instance" "data_migrate_ec2" {
   vpc_security_group_ids = [var.app_server_security_group_id, var.eice_security_group_id]
   iam_instance_profile   = var.iam_instance_profile
 
-  user_data = base64encode(local_file.user_data_script.content)
+  user_data = base64encode(templatefile("${path.module}/user_data_template.sh.tpl", {
+    rds_endpoint = var.rds_endpoint,
+    rds_db_name  = var.rds_db_name,
+    username     = var.username,
+    password     = var.password
+  }))
+
   
   depends_on = [aws_db_instance.database_instance]
 

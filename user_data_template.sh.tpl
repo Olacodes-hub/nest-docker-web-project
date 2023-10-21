@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 # Download and extract Flyway
@@ -13,7 +14,7 @@ sudo mkdir sql
 aws s3 cp s3://nest-sql/V1__nest.sql sql/
 
 # Run Flyway migration
-sudo flyway -url=jdbc:mysql://"${rds_endpoint}"/"${rds_db_name}" \
+sudo flyway -url=jdbc:mysql="${rds_endpoint}/${rds_db_name}" \
   -user="${username}" \
   -password="${password}" \
   -locations=filesystem:sql \
