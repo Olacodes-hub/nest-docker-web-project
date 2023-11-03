@@ -1,6 +1,6 @@
 # Hosting a Website on AWS ECS with Docker - README
 
-This README file provides instructions for hosting a website on AWS ECS (Elastic Container Service) using Docker. The setup includes creating an ECS cluster, defining ECS tasks, and configuring the ECS service for hosting the website.
+This README file provides instructions for hosting a website on AWS ECS (Elastic Container Service) using Docker. The setup includes creating an ECS cluster, defining ECS tasks, and configuring the ECS service for hosting the website. The website archictecture is based on the Laravel PHP Framework
 
 ## Prerequisites
 
