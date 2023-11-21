@@ -252,9 +252,9 @@ sudo service httpd restart
    - Once the deployment is complete, access the website using the provided domain name.
 6. **Manage ECS Cluster and Task Definitions:
 
-Manage your ECS cluster by navigating to the ECS service in the AWS Management Console.
-Monitor and adjust the number of tasks running in the ECS cluster based on demand.
-Update or create new task definitions to accommodate changes or improvements to your Docker containers.
+   - Manage your ECS cluster by navigating to the ECS service in the AWS Management Console.
+   Monitor and adjust the number of tasks running in the ECS cluster based on demand.
+   Update or create new task definitions to accommodate changes or improvements to your Docker containers.
 
 For more detailed instructions, refer to the [Wiki](#) of this repository.
 
